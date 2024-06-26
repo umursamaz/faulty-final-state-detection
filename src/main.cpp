@@ -393,7 +393,7 @@ int main(int argc, char * argv[]) try {
 	size_t total_number_of_states = get_number_of_states(args.input_filename) - 1;
 	std::unordered_set<size_t> unique_states;
 	collect_unique_states(sequence, unique_states);
-	// std::cout << machine.graph_size << total_number_of_states << "DUYGU" << endl;
+	std::cout << machine.graph_size << total_number_of_states << "DUYGU" << endl;
 
 	if (unique_states.size() == total_number_of_states) {
 		std::ofstream tree_file("../tree_output.txt");

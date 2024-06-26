@@ -1,0 +1,19 @@
+digraph distinguishable {
+	s0 -> s6 [label="a / 1"];
+	s1 -> s1 [label="a / 1"];
+	s2 -> s3 [label="a / 0"];
+	s3 -> s6 [label="a / 0"];
+	s4 -> s5 [label="a / 1"];
+	s5 -> s4 [label="a / 1"];
+	s6 -> s2 [label="a / 1"];
+	s7 -> s1 [label="a / 0"];
+
+	s0 -> s0 [label="b / 1"];
+	s1 -> s4 [label="b / 1"];
+	s2 -> s3 [label="b / 1"];
+	s3 -> s5 [label="b / 1"];
+	s4 -> s3 [label="b / 1"];
+	s5 -> s1 [label="b / 0"];
+	s6 -> s7 [label="b / 1"];
+	s7 -> s3 [label="b / 0"];
+}
