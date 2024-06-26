@@ -1,0 +1,24 @@
+# mac
+.DS_Store
+
+# qt creator/cmake
+*.user
+build
+
+# latex
+*.aux
+*.tdo
+*.log
+
+# output
+*.pdf
+*.png
+
+# data
+.dot
+
+# our own tools
+*_seq
+*splitting_tree
+*test_suite
+

@@ -1,0 +1,66 @@
+└── Depth: 0
+    Word: a 
+    CI Pairs:
+    (1, 1)
+    (2, 2)
+    (3, 3)
+    (4, 4)
+    (5, 5)
+    (6, 6)
+    Children:
+    ├── Depth: 1
+    │   Word: a b a 
+    │   CI Pairs:
+    │   (2, 1)
+    │   (4, 3)
+    │   (6, 5)
+    │   Children:
+    │   ├── Depth: 2
+    │   │   Word: b a 
+    │   │   CI Pairs:
+    │   │   (1, 3)
+    │   │   (5, 1)
+    │   │   Children:
+    │   │   ├── Depth: 3
+    │   │   │   Word: 
+    │   │   │   CI Pairs:
+    │   │   │   (2, 3)
+    │   │   │   Children:
+    │   │   └── Depth: 3
+    │   │       Word: 
+    │   │       CI Pairs:
+    │   │       (1, 1)
+    │   │       Children:
+    │   └── Depth: 2
+    │       Word: 
+    │       CI Pairs:
+    │       (2, 5)
+    │       Children:
+    └── Depth: 1
+        Word: b a 
+        CI Pairs:
+        (1, 6)
+        (3, 2)
+        (5, 4)
+        Children:
+        ├── Depth: 2
+        │   Word: 
+        │   CI Pairs:
+        │   (2, 6)
+        │   Children:
+        └── Depth: 2
+            Word: b a 
+            CI Pairs:
+            (1, 4)
+            (5, 2)
+            Children:
+            ├── Depth: 3
+            │   Word: 
+            │   CI Pairs:
+            │   (2, 4)
+            │   Children:
+            └── Depth: 3
+                Word: 
+                CI Pairs:
+                (1, 2)
+                Children:
