@@ -7,11 +7,10 @@ FSM_GENERATOR_DIR = "./Minimal-FSM-Generator"
 CPP_BINARY_DIR = "build"
 EXAMPLES_DIR = "examples"
 
-# File name
 FSM_FILE = "ads_example.dot"
 OUTPUT_FILE = "ads_sequence.txt"
 
-# Function to run a command in WSL
+# Function to run a command in WSL(Linux Shell)
 def run_in_wsl(command):
     return subprocess.run(["wsl", "bash", "-c", command], capture_output=True, text=True)
 
@@ -19,17 +18,24 @@ def run_in_wsl(command):
 def convert_to_wsl_path(path):
     return subprocess.run(["wsl", "wslpath", "-a", path], capture_output=True, text=True).stdout.strip()
 
-# Function to remove the output file if it exists
 def remove_output_file():
     if os.path.exists(OUTPUT_FILE):
         os.remove(OUTPUT_FILE)
         print(f"Removed existing output file '{OUTPUT_FILE}'")
 
-# Function to check if the output file was generated
 def output_file_exists():
     return os.path.exists(OUTPUT_FILE)
 
-# Main loop to generate FSM and run C++ program until output file is generated
+def valid_ads_sequence(file_path, num_states):
+    with open(file_path, 'r') as f:
+        lines = f.readlines()
+    states_with_sequences = set()
+    for line in lines:
+        if '->' in line and line.strip().split('->')[1].strip():  # Ensure the sequence is not empty
+            state = line.strip().split('->')[0].strip()
+            states_with_sequences.add(state)
+    return len(states_with_sequences) == num_states
+
 while True:
     # Remove existing output file if it exists
     remove_output_file()
@@ -79,8 +85,17 @@ while True:
     # Check if the output file was generated
     if output_file_exists():
         print(f"Success: Output file '{OUTPUT_FILE}' was generated.")
-        break  # Exit the loop
+        
+        num_states = 15  # MUST BE CHANGED
+        
+        if valid_ads_sequence(OUTPUT_FILE, num_states):
+            print(f"Success: Output file '{OUTPUT_FILE}' was generated with valid sequences.")
+            break  # Exit the loop
+        else:
+            print(f"Error: Output file '{OUTPUT_FILE}' does not contain valid sequences for all states. Generating another FSM...")
     else:
         print(f"Error: Output file '{OUTPUT_FILE}' was not generated. Generating another FSM...")
+    
 
 print("Process completed.")
+
