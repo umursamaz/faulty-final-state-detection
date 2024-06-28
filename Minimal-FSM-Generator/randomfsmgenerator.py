@@ -363,7 +363,31 @@ class FSM:
             return True
 
         return False
-  
+    
+    def generateStronglyConnected(self):
+            # Create all the states
+            for i in range(self.numOfStates):
+                self.nodes.append(FSM.Node(self.numOfInputs, i))
+
+            # Initially connect them to form a simple cycle
+            for i in range(self.numOfStates):
+                next_index = (i + 1) % self.numOfStates
+                for j in range(self.numOfInputs):
+                    self.nodes[i].transitions[j] = (self.nodes[next_index], random.randint(0, self.numOfOutputs - 1))
+
+            # Randomize additional transitions to ensure strong connectivity and randomness
+            for node in self.nodes:
+                for i in range(self.numOfInputs):
+                    if node.transitions[i][0] is None or random.random() < 0.5:
+                        node.transitions[i] = (random.choice(self.nodes), random.randint(0, self.numOfOutputs - 1))
+
+    def generateStronglyConnectedMinimal(self):
+        self.generateStronglyConnected()
+
+        while not self.isSurelyMinimal():
+            self.clear()
+            self.generateStronglyConnected()  
+            
 if __name__ == "__main__":
     
     fsm = FSM(10,3,5)
