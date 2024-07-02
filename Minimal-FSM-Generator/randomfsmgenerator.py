@@ -364,23 +364,33 @@ class FSM:
 
         return False
     
+    # def generateStronglyConnected(self):
+    #         # Create all the states
+    #         for i in range(self.numOfStates):
+    #             self.nodes.append(FSM.Node(self.numOfInputs, i))
+    #         # Initially connect them to form a simple cycle
+    #         for i in range(self.numOfStates):
+    #             next_index = (i + 1) % self.numOfStates
+    #             self.nodes[i].transitions[0] = (self.nodes[next_index], random.randint(0, self.numOfOutputs - 1))
+    #         # Randomize additional transitions to ensure strong connectivity and randomness
+    #         for node in self.nodes:
+    #             node.transitions[1] = (random.choice(self.nodes), random.randint(0, self.numOfOutputs - 1))
+    
     def generateStronglyConnected(self):
             # Create all the states
             for i in range(self.numOfStates):
                 self.nodes.append(FSM.Node(self.numOfInputs, i))
-
             # Initially connect them to form a simple cycle
             for i in range(self.numOfStates):
                 next_index = (i + 1) % self.numOfStates
-                for j in range(self.numOfInputs):
-                    self.nodes[i].transitions[j] = (self.nodes[next_index], random.randint(0, self.numOfOutputs - 1))
-
+                self.nodes[i].transitions[random.randint(0, self.numOfInputs - 1)] = (self.nodes[next_index], random.randint(0, self.numOfOutputs - 1))
             # Randomize additional transitions to ensure strong connectivity and randomness
             for node in self.nodes:
                 for i in range(self.numOfInputs):
-                    if node.transitions[i][0] is None or random.random() < 0.5:
+                    if node.transitions[i][0] is None:
                         node.transitions[i] = (random.choice(self.nodes), random.randint(0, self.numOfOutputs - 1))
-
+                
+                
     def generateStronglyConnectedMinimal(self):
         self.generateStronglyConnected()
 

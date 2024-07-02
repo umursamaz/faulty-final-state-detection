@@ -1,6 +1,8 @@
 import os
 import subprocess
 import platform
+import re
+from collections import defaultdict
 
 # Directories
 FSM_GENERATOR_DIR = "./Minimal-FSM-Generator"
@@ -9,6 +11,52 @@ EXAMPLES_DIR = "examples"
 
 FSM_FILE = "ads_example.dot"
 OUTPUT_FILE = "ads_sequence.txt"
+
+################################################################
+# These functions are needed for checking if an FSM is strongly-connected or not
+def parse_dot(dot_string):
+    graph = defaultdict(list)
+    edges = re.findall(r'(\w+)\s*->\s*(\w+)\s*\[label="[^"]+"\];', dot_string)
+    for source, target in edges:
+        graph[source].append(target)
+    return graph
+
+def dfs(graph, node, visited):
+    visited.add(node)
+    for neighbor in graph[node]:
+        if neighbor not in visited:
+            dfs(graph, neighbor, visited)
+
+def is_strongly_connected(graph):
+    if not graph:
+        return True
+    
+    # Step 1: Check reachability from the first node
+    start_node = next(iter(graph))
+    visited = set()
+    dfs(graph, start_node, visited)
+    if len(visited) != len(graph):
+        return False
+    
+    # Step 2: Create the reverse graph
+    reverse_graph = defaultdict(list)
+    for node in graph:
+        for neighbor in graph[node]:
+            reverse_graph[neighbor].append(node)
+    
+    # Step 3: Check reachability in the reverse graph
+    visited = set()
+    dfs(reverse_graph, start_node, visited)
+    if len(visited) != len(reverse_graph):
+        return False
+    
+    return True
+
+def read_dot_file(file_path):
+    with open(file_path, 'r') as file:
+        dot_string = file.read()
+    return dot_string
+################################################################
 
 # Function to run a command in WSL(Linux Shell)
 def run_in_wsl(command):
@@ -36,11 +84,16 @@ def valid_ads_sequence(file_path, num_states):
             states_with_sequences.add(state)
     return len(states_with_sequences) == num_states
 
+try_count = 0
+
 while True:
+    
+    try_count += 1
+    
     # Remove existing output file if it exists
     remove_output_file()
 
-    # Step 1: Generate FSM Example
+    # Generate FSM 
     print("Generating FSM...")
     os.chdir(FSM_GENERATOR_DIR)
     subprocess.run(["python", "main.py"])
@@ -51,7 +104,11 @@ while True:
     if not os.path.exists(fsm_file_path):
         print(f"Error: FSM file '{fsm_file_path}' not found.")
         continue  # Generate another FSM
-
+    
+    # Check if it is a strongly connected FSM or not
+    dot_string = read_dot_file(fsm_file_path)
+    fsm_graph = parse_dot(dot_string)
+    print("Is strongly-connected ->", is_strongly_connected(fsm_graph))
     # Step 2: Change directory to build and run the C++ program
     print("Running C++ program to get ADS sequences...")
 
@@ -59,7 +116,6 @@ while True:
     cpp_executable = "./main"
     command = f"{cpp_executable} -m fixed -f ../{EXAMPLES_DIR}/{FSM_FILE}"
 
-    # Print debug information
     print(f"Running command: {command}")
 
     # Run the command using WSL on Windows or directly on Linux
@@ -78,7 +134,6 @@ while True:
         result = subprocess.run(command, shell=True, capture_output=True, text=True)
         os.chdir("..")
 
-    # Print the command output for debugging
     print("Command output:", result.stdout)
     print("Command errors:", result.stderr)
 
@@ -86,7 +141,8 @@ while True:
     if output_file_exists():
         print(f"Success: Output file '{OUTPUT_FILE}' was generated.")
         
-        num_states = 15  # MUST BE CHANGED
+        
+        num_states = 30  # MUST BE CHANGED
         
         if valid_ads_sequence(OUTPUT_FILE, num_states):
             print(f"Success: Output file '{OUTPUT_FILE}' was generated with valid sequences.")
@@ -96,6 +152,6 @@ while True:
     else:
         print(f"Error: Output file '{OUTPUT_FILE}' was not generated. Generating another FSM...")
     
-
+print("Took", try_count, "tries.")
 print("Process completed.")
 

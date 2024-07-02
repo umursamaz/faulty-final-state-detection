@@ -413,7 +413,7 @@ int main(int argc, char * argv[]) try {
 		          << std::endl;
 	}
 
-	output_sequence(sequence, std::cout);
+	// output_sequence(sequence, std::cout);
 	print_leaf_nodes(sequence, std::cout);
 
 	/*

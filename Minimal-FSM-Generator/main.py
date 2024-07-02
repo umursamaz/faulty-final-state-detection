@@ -1,6 +1,6 @@
 from randomfsmgenerator import FSM
 
-num_of_states  = 15
+num_of_states  = 30
 num_of_inputs  = 2
 num_of_outputs = 2
 
