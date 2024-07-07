@@ -1,5 +1,5 @@
 └── Depth: 0
-    Word: b 
+    Word: a 
     CI Pairs:
     (1, 1)
     (2, 2)
@@ -16,186 +16,406 @@
     (13, 13)
     (14, 14)
     (15, 15)
+    (16, 16)
+    (17, 17)
+    (18, 18)
+    (19, 19)
+    (20, 20)
+    (21, 21)
+    (22, 22)
+    (23, 23)
+    (24, 24)
+    (25, 25)
+    (26, 26)
+    (27, 27)
+    (28, 28)
+    (29, 29)
+    (30, 30)
     Children:
     ├── Depth: 1
-    │   Word: b 
+    │   Word: a 
     │   CI Pairs:
-    │   (3, 1)
-    │   (5, 14)
-    │   (10, 8)
-    │   (12, 9)
-    │   (14, 12)
-    │   (15, 13)
+    │   (2, 1)
+    │   (6, 3)
+    │   (7, 20)
+    │   (8, 4)
+    │   (9, 22)
+    │   (11, 7)
+    │   (12, 26)
+    │   (13, 18)
+    │   (14, 10)
+    │   (16, 30)
+    │   (21, 25)
+    │   (22, 16)
+    │   (25, 21)
     │   Children:
     │   ├── Depth: 2
-    │   │   Word: b 
+    │   │   Word: a 
     │   │   CI Pairs:
-    │   │   (5, 12)
-    │   │   (14, 9)
+    │   │   (9, 16)
+    │   │   (11, 20)
+    │   │   (21, 21)
+    │   │   (22, 30)
+    │   │   (25, 25)
     │   │   Children:
     │   │   ├── Depth: 3
-    │   │   │   Word: 
+    │   │   │   Word: a 
     │   │   │   CI Pairs:
-    │   │   │   (5, 9)
+    │   │   │   (9, 30)
+    │   │   │   (21, 25)
+    │   │   │   (25, 21)
     │   │   │   Children:
+    │   │   │   ├── Depth: 4
+    │   │   │   │   Word: b 
+    │   │   │   │   CI Pairs:
+    │   │   │   │   (21, 21)
+    │   │   │   │   (25, 25)
+    │   │   │   │   Children:
+    │   │   │   │   ├── Depth: 5
+    │   │   │   │   │   Word: 
+    │   │   │   │   │   CI Pairs:
+    │   │   │   │   │   (26, 21)
+    │   │   │   │   │   Children:
+    │   │   │   │   └── Depth: 5
+    │   │   │   │       Word: 
+    │   │   │   │       CI Pairs:
+    │   │   │   │       (10, 25)
+    │   │   │   │       Children:
+    │   │   │   └── Depth: 4
+    │   │   │       Word: 
+    │   │   │       CI Pairs:
+    │   │   │       (13, 30)
+    │   │   │       Children:
     │   │   └── Depth: 3
-    │   │       Word: 
+    │   │       Word: a a 
     │   │       CI Pairs:
-    │   │       (7, 12)
+    │   │       (13, 16)
+    │   │       (15, 20)
     │   │       Children:
+    │   │       ├── Depth: 4
+    │   │       │   Word: 
+    │   │       │   CI Pairs:
+    │   │       │   (7, 20)
+    │   │       │   Children:
+    │   │       └── Depth: 4
+    │   │           Word: 
+    │   │           CI Pairs:
+    │   │           (23, 16)
+    │   │           Children:
     │   └── Depth: 2
-    │       Word: b 
+    │       Word: a 
     │       CI Pairs:
-    │       (5, 8)
-    │       (6, 1)
-    │       (7, 14)
-    │       (8, 13)
+    │       (4, 1)
+    │       (10, 3)
+    │       (12, 4)
+    │       (13, 22)
+    │       (15, 7)
+    │       (16, 26)
+    │       (17, 18)
+    │       (18, 10)
     │       Children:
     │       ├── Depth: 3
-    │       │   Word: 
+    │       │   Word: a 
     │       │   CI Pairs:
-    │       │   (10, 13)
+    │       │   (8, 1)
+    │       │   (13, 10)
+    │       │   (14, 3)
+    │       │   (22, 26)
     │       │   Children:
+    │       │   ├── Depth: 4
+    │       │   │   Word: 
+    │       │   │   CI Pairs:
+    │       │   │   (9, 26)
+    │       │   │   Children:
+    │       │   └── Depth: 4
+    │       │       Word: a 
+    │       │       CI Pairs:
+    │       │       (12, 1)
+    │       │       (17, 10)
+    │       │       (18, 3)
+    │       │       Children:
+    │       │       ├── Depth: 5
+    │       │       │   Word: 
+    │       │       │   CI Pairs:
+    │       │       │   (13, 3)
+    │       │       │   Children:
+    │       │       └── Depth: 5
+    │       │           Word: a 
+    │       │           CI Pairs:
+    │       │           (16, 1)
+    │       │           (23, 10)
+    │       │           Children:
+    │       │           ├── Depth: 6
+    │       │           │   Word: 
+    │       │           │   CI Pairs:
+    │       │           │   (22, 1)
+    │       │           │   Children:
+    │       │           └── Depth: 6
+    │       │               Word: 
+    │       │               CI Pairs:
+    │       │               (24, 10)
+    │       │               Children:
     │       └── Depth: 3
-    │           Word: b 
+    │           Word: a 
     │           CI Pairs:
-    │           (7, 8)
-    │           (9, 1)
-    │           (10, 14)
+    │           (16, 4)
+    │           (17, 22)
+    │           (20, 7)
+    │           (23, 18)
     │           Children:
     │           ├── Depth: 4
-    │           │   Word: 
+    │           │   Word: a a a a 
     │           │   CI Pairs:
-    │           │   (12, 1)
+    │           │   (7, 7)
+    │           │   (22, 4)
     │           │   Children:
+    │           │   ├── Depth: 5
+    │           │   │   Word: 
+    │           │   │   CI Pairs:
+    │           │   │   (7, 7)
+    │           │   │   Children:
+    │           │   └── Depth: 5
+    │           │       Word: 
+    │           │       CI Pairs:
+    │           │       (23, 4)
+    │           │       Children:
     │           └── Depth: 4
-    │               Word: b a 
+    │               Word: a a a a 
     │               CI Pairs:
-    │               (5, 14)
-    │               (10, 8)
+    │               (23, 22)
+    │               (24, 18)
     │               Children:
     │               ├── Depth: 5
     │               │   Word: 
     │               │   CI Pairs:
-    │               │   (9, 14)
+    │               │   (30, 22)
     │               │   Children:
     │               └── Depth: 5
     │                   Word: 
     │                   CI Pairs:
-    │                   (2, 8)
+    │                   (16, 18)
     │                   Children:
     └── Depth: 1
-        Word: b 
+        Word: a 
         CI Pairs:
-        (2, 11)
-        (3, 4)
+        (1, 5)
+        (3, 19)
         (4, 2)
-        (5, 10)
-        (6, 3)
-        (7, 5)
-        (8, 15)
-        (9, 6)
-        (10, 7)
+        (10, 6)
+        (12, 8)
+        (13, 9)
+        (15, 11)
+        (16, 12)
+        (17, 13)
+        (18, 14)
+        (20, 15)
+        (23, 17)
+        (24, 23)
+        (26, 28)
+        (27, 24)
+        (29, 27)
+        (30, 29)
         Children:
         ├── Depth: 2
-        │   Word: b 
+        │   Word: a 
         │   CI Pairs:
-        │   (10, 15)
-        │   (12, 6)
+        │   (2, 5)
+        │   (6, 19)
+        │   (7, 15)
+        │   (8, 2)
+        │   (12, 28)
+        │   (13, 14)
+        │   (14, 6)
+        │   (16, 29)
+        │   (22, 12)
         │   Children:
         │   ├── Depth: 3
-        │   │   Word: 
+        │   │   Word: a 
         │   │   CI Pairs:
-        │   │   (14, 6)
+        │   │   (9, 12)
+        │   │   (11, 15)
+        │   │   (22, 29)
         │   │   Children:
+        │   │   ├── Depth: 4
+        │   │   │   Word: 
+        │   │   │   CI Pairs:
+        │   │   │   (9, 29)
+        │   │   │   Children:
+        │   │   └── Depth: 4
+        │   │       Word: a a 
+        │   │       CI Pairs:
+        │   │       (13, 12)
+        │   │       (15, 15)
+        │   │       Children:
+        │   │       ├── Depth: 5
+        │   │       │   Word: 
+        │   │       │   CI Pairs:
+        │   │       │   (7, 15)
+        │   │       │   Children:
+        │   │       └── Depth: 5
+        │   │           Word: 
+        │   │           CI Pairs:
+        │   │           (23, 12)
+        │   │           Children:
         │   └── Depth: 3
-        │       Word: 
+        │       Word: a 
         │       CI Pairs:
-        │       (5, 15)
+        │       (4, 5)
+        │       (10, 19)
+        │       (12, 2)
+        │       (16, 28)
+        │       (17, 14)
+        │       (18, 6)
         │       Children:
+        │       ├── Depth: 4
+        │       │   Word: a 
+        │       │   CI Pairs:
+        │       │   (8, 5)
+        │       │   (13, 6)
+        │       │   (14, 19)
+        │       │   (22, 28)
+        │       │   Children:
+        │       │   ├── Depth: 5
+        │       │   │   Word: 
+        │       │   │   CI Pairs:
+        │       │   │   (9, 28)
+        │       │   │   Children:
+        │       │   └── Depth: 5
+        │       │       Word: a 
+        │       │       CI Pairs:
+        │       │       (12, 5)
+        │       │       (17, 6)
+        │       │       (18, 19)
+        │       │       Children:
+        │       │       ├── Depth: 6
+        │       │       │   Word: 
+        │       │       │   CI Pairs:
+        │       │       │   (13, 19)
+        │       │       │   Children:
+        │       │       └── Depth: 6
+        │       │           Word: a 
+        │       │           CI Pairs:
+        │       │           (16, 5)
+        │       │           (23, 6)
+        │       │           Children:
+        │       │           ├── Depth: 7
+        │       │           │   Word: 
+        │       │           │   CI Pairs:
+        │       │           │   (22, 5)
+        │       │           │   Children:
+        │       │           └── Depth: 7
+        │       │               Word: 
+        │       │               CI Pairs:
+        │       │               (24, 6)
+        │       │               Children:
+        │       └── Depth: 4
+        │           Word: a 
+        │           CI Pairs:
+        │           (16, 2)
+        │           (23, 14)
+        │           Children:
+        │           ├── Depth: 5
+        │           │   Word: 
+        │           │   CI Pairs:
+        │           │   (22, 2)
+        │           │   Children:
+        │           └── Depth: 5
+        │               Word: 
+        │               CI Pairs:
+        │               (24, 14)
+        │               Children:
         └── Depth: 2
-            Word: b 
+            Word: a 
             CI Pairs:
-            (3, 2)
-            (4, 11)
-            (5, 7)
-            (6, 4)
-            (7, 10)
-            (9, 3)
-            (10, 5)
+            (16, 8)
+            (17, 9)
+            (20, 11)
+            (23, 13)
+            (24, 17)
+            (27, 23)
+            (29, 24)
+            (30, 27)
             Children:
             ├── Depth: 3
-            │   Word: 
+            │   Word: a a 
             │   CI Pairs:
-            │   (12, 3)
+            │   (7, 11)
+            │   (16, 27)
+            │   (22, 8)
             │   Children:
+            │   ├── Depth: 4
+            │   │   Word: a a 
+            │   │   CI Pairs:
+            │   │   (13, 8)
+            │   │   (15, 11)
+            │   │   Children:
+            │   │   ├── Depth: 5
+            │   │   │   Word: 
+            │   │   │   CI Pairs:
+            │   │   │   (7, 11)
+            │   │   │   Children:
+            │   │   └── Depth: 5
+            │   │       Word: 
+            │   │       CI Pairs:
+            │   │       (23, 8)
+            │   │       Children:
+            │   └── Depth: 4
+            │       Word: 
+            │       CI Pairs:
+            │       (9, 27)
+            │       Children:
             └── Depth: 3
-                Word: b 
+                Word: a 
                 CI Pairs:
-                (3, 11)
-                (5, 5)
-                (6, 2)
-                (7, 7)
-                (9, 4)
-                (10, 10)
+                (23, 9)
+                (24, 13)
+                (27, 17)
+                (29, 23)
+                (30, 24)
                 Children:
                 ├── Depth: 4
                 │   Word: 
                 │   CI Pairs:
-                │   (12, 4)
+                │   (16, 24)
                 │   Children:
                 └── Depth: 4
-                    Word: b 
+                    Word: a 
                     CI Pairs:
-                    (5, 10)
-                    (6, 11)
-                    (7, 5)
-                    (9, 2)
-                    (10, 7)
+                    (24, 9)
+                    (27, 13)
+                    (29, 17)
+                    (30, 23)
                     Children:
                     ├── Depth: 5
                     │   Word: 
                     │   CI Pairs:
-                    │   (12, 2)
+                    │   (16, 23)
                     │   Children:
                     └── Depth: 5
-                        Word: b 
+                        Word: a 
                         CI Pairs:
-                        (5, 7)
-                        (7, 10)
-                        (9, 11)
-                        (10, 5)
+                        (27, 9)
+                        (29, 13)
+                        (30, 17)
                         Children:
                         ├── Depth: 6
                         │   Word: 
                         │   CI Pairs:
-                        │   (12, 11)
+                        │   (16, 17)
                         │   Children:
                         └── Depth: 6
                             Word: a 
                             CI Pairs:
-                            (5, 5)
-                            (7, 7)
-                            (10, 10)
+                            (29, 9)
+                            (30, 13)
                             Children:
                             ├── Depth: 7
-                            │   Word: a 
+                            │   Word: 
                             │   CI Pairs:
-                            │   (2, 5)
-                            │   (7, 10)
+                            │   (16, 13)
                             │   Children:
-                            │   ├── Depth: 8
-                            │   │   Word: 
-                            │   │   CI Pairs:
-                            │   │   (1, 5)
-                            │   │   Children:
-                            │   └── Depth: 8
-                            │       Word: 
-                            │       CI Pairs:
-                            │       (9, 10)
-                            │       Children:
                             └── Depth: 7
                                 Word: 
                                 CI Pairs:
-                                (9, 7)
+                                (30, 9)
                                 Children:
