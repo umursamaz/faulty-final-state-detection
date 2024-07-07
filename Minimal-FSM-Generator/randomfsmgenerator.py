@@ -18,14 +18,14 @@ class FSM:
     class Node:
         def __init__(self, numOfInputs, index):
             self.transitions = []
-            self.index = index
+            self.index = index 
             self.newGroup=[]
 
             self.parent = None ## will be used to analyse the traces later
             
             ## initialize the node to have #inputs many transitions
             for i in range(numOfInputs):
-                self.transitions.append((None, None)) # Destination and output is empty for now
+                self.transitions.append((None, None)) # Destination and output is empty for now, and index is input
 
     class GraphNode:
         def __init__(self, nodeTuple):
@@ -54,12 +54,24 @@ class FSM:
         #Create all the states:
         for i in range(self.numOfStates):
             self.nodes.append(FSM.Node(self.numOfInputs, i))
-
+            
         #Connect them randomly
         for node in self.nodes:
             for i in range(self.numOfInputs):
-                node.transitions[i] = (random.choice(self.nodes), random.randint(0, self.numOfOutputs-1))
+                destination = random.choice(self.nodes)
+                output = random.randint(0, self.numOfOutputs-1)
+                node.transitions[i] = (destination, output)
 
+    def get_reverse_transitions(self):
+        reverse_transitions = []
+        for node in self.nodes:
+            reverse_transitions.append([])
+        for node in self.nodes:
+            for i in range(self.numOfInputs):
+                destination = node.transitions[i][0]
+                reverse_transitions[destination.index].append(node.index)
+        return reverse_transitions
+    
     def clear(self):
         while len(self.nodes) > 0:
             del self.nodes[0]
@@ -93,13 +105,20 @@ class FSM:
 
         return traceList
 
-    def show(self):
+    def show(self, reverse=False):
         for node in self.nodes:
             print("Node:", node.index, ":")
             print("[", end="")
             for i in range(len(node.transitions)):
                 print("(input:{}, to:{}, output:{})".format(i, node.transitions[i][0].index, node.transitions[i][1]), end="")
             print("]")
+        if reverse:
+            rt = self.get_reverse_transitions()
+            for node_index in range(self.numOfStates):
+                print("Node:", node_index, "goes to: ", end="")
+                for dest in rt[node_index]:
+                    print(" Node", dest, end="")
+                print()
             
     def output_for_ads(self, filename='ads_example.dot'):
         """

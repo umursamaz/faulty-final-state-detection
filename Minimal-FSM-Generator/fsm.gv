@@ -1,0 +1,9 @@
+digraph Finite_State_Machine {
+	node [shape=circle]
+	0 -> 1 [label="i:0/o:0"]
+	0 -> 1 [label="i:1/o:0"]
+	1 -> 2 [label="i:0/o:0"]
+	1 -> 2 [label="i:1/o:1"]
+	2 -> 1 [label="i:0/o:1"]
+	2 -> 1 [label="i:1/o:0"]
+}

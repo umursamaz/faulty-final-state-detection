@@ -142,7 +142,7 @@ while True:
         print(f"Success: Output file '{OUTPUT_FILE}' was generated.")
         
         
-        num_states = 30  # MUST BE CHANGED
+        num_states = 15  # MUST BE CHANGED
         
         if valid_ads_sequence(OUTPUT_FILE, num_states):
             print(f"Success: Output file '{OUTPUT_FILE}' was generated with valid sequences.")
