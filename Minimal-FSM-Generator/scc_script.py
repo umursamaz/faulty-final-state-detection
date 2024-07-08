@@ -12,7 +12,7 @@ def create_adj_list(graph):
             adj_list[node.index].append(transition[0].index)
     return adj_list
 
-num_of_states  = 50
+num_of_states  = 3
 num_of_inputs  = 2
 num_of_outputs = 2
 

@@ -1,6 +1,12 @@
 from randomfsmgenerator import FSM
+import sys
 
-num_of_states  = 30
+# Capture command-line argument for num_states
+if len(sys.argv) > 1:
+    num_of_states = int(sys.argv[1])
+else:
+    num_of_states = 15  # Default value if not provided
+    
 num_of_inputs  = 2
 num_of_outputs = 2
 

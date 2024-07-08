@@ -3,6 +3,7 @@ import subprocess
 import platform
 import re
 from collections import defaultdict
+import sys
 
 # Directories
 FSM_GENERATOR_DIR = "./Minimal-FSM-Generator"
@@ -11,6 +12,12 @@ EXAMPLES_DIR = "examples"
 
 FSM_FILE = "ads_example.dot"
 OUTPUT_FILE = "ads_sequence.txt"
+
+# Capture command-line argument for num_states
+if len(sys.argv) > 1:
+    num_states = int(sys.argv[1])
+else:
+    num_states = 15  # Default value if not provided
 
 ################################################################
 # These functions are needed for checking if an FSM is strongly-connected or not
@@ -96,7 +103,7 @@ while True:
     # Generate FSM 
     print("Generating FSM...")
     os.chdir(FSM_GENERATOR_DIR)
-    subprocess.run(["python", "main.py"])
+    subprocess.run(["python", "main.py", str(num_states)])
     os.chdir("..")
 
     # Check if the FSM file was generated
@@ -141,8 +148,6 @@ while True:
     if output_file_exists():
         print(f"Success: Output file '{OUTPUT_FILE}' was generated.")
         
-        
-        num_states = 30  # MUST BE CHANGED
         
         if valid_ads_sequence(OUTPUT_FILE, num_states):
             print(f"Success: Output file '{OUTPUT_FILE}' was generated with valid sequences.")
