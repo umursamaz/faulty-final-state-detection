@@ -97,8 +97,8 @@ prefixes. However, this can quickly grow in size. Be warned!
 To run main.cpp in this project, if you are using Windows OS, first, you must open Linux shell. Then you must go to build folder. Finally, you can run, with the options in main.cpp. Here is an example:
 
 ```
-Users/User/Desktop/hybrid-ads-master$ `cd build`
-Users/User/Desktop/hybrid-ads-master/build$ `./main -f ../examples/new_example.dot -m fixed`
+C:\Users/User/Desktop/hybrid-ads-master$ cd build
+C:\Users/User/Desktop/hybrid-ads-master/build$ ./main -f ../examples/new_example.dot -m fixed
 ```
 
 As an output you will have:
