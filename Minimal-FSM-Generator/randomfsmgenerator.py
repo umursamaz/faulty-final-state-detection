@@ -51,6 +51,9 @@ class FSM:
         #[[2,5][1,3][4]]
         self.groupsList = None
 
+        # set seed to regenerate the test environment
+        random.seed(1)
+
     def generate(self):
         #Create all the states:
         for i in range(self.numOfStates):
