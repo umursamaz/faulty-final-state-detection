@@ -12,6 +12,6 @@ num_of_outputs = 2
 
 myfsm = FSM(num_of_states, num_of_inputs, num_of_outputs)
 myfsm.generateStronglyConnectedMinimal()
-myfsm.output_for_ads("../examples/ads_example.dot")
+myfsm.output_for_ads("../examples/PURE2024/test_seed_machines/test_seed_machine_3.dot")
 # myfsm.show()
 # myfsm.draw()
