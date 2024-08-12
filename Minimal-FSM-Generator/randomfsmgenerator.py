@@ -41,7 +41,7 @@ class FSM:
                 self.backwardsConnections.append(smthing)
 
 
-    def __init__(self, numOfStates, numOfInputs, numOfOutputs): #x is range of randomness.
+    def __init__(self, numOfStates, numOfInputs, numOfOutputs, seed): #x is range of randomness.
         self.numOfStates = numOfStates
         self.numOfInputs = numOfInputs
         self.numOfOutputs = numOfOutputs
@@ -52,7 +52,7 @@ class FSM:
         self.groupsList = None
 
         # set seed to regenerate the test environment
-        random.seed(1)
+        random.seed(seed)
 
     def generate(self):
         #Create all the states:
