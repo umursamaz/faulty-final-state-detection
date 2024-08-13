@@ -45,6 +45,7 @@ class FSM:
         self.numOfStates = numOfStates
         self.numOfInputs = numOfInputs
         self.numOfOutputs = numOfOutputs
+        self.seed = seed
 
         self.nodes = []
         
@@ -235,6 +236,7 @@ class FSM:
         
         input_mapper = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
         with open(filename, 'w') as file:
+            file.write('state_num, ' + str(self.numOfStates) + ', seed, ' + str(self.seed) + '\n')
             file.write('digraph distinguishable {\n')
             for inp in range(self.numOfInputs):
                 for node in self.nodes:

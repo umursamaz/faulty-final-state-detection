@@ -1,0 +1,36 @@
+state_num, 16, seed, 757
+digraph distinguishable {
+	s0 -> s12 [label="a / 0"];
+	s1 -> s5 [label="a / 1"];
+	s2 -> s8 [label="a / 1"];
+	s3 -> s4 [label="a / 0"];
+	s4 -> s14 [label="a / 1"];
+	s5 -> s10 [label="a / 0"];
+	s6 -> s12 [label="a / 0"];
+	s7 -> s6 [label="a / 0"];
+	s8 -> s12 [label="a / 0"];
+	s9 -> s14 [label="a / 1"];
+	s10 -> s15 [label="a / 0"];
+	s11 -> s15 [label="a / 1"];
+	s12 -> s3 [label="a / 1"];
+	s13 -> s3 [label="a / 1"];
+	s14 -> s8 [label="a / 0"];
+	s15 -> s7 [label="a / 0"];
+
+	s0 -> s14 [label="b / 0"];
+	s1 -> s11 [label="b / 0"];
+	s2 -> s10 [label="b / 0"];
+	s3 -> s7 [label="b / 1"];
+	s4 -> s9 [label="b / 1"];
+	s5 -> s3 [label="b / 0"];
+	s6 -> s13 [label="b / 1"];
+	s7 -> s15 [label="b / 1"];
+	s8 -> s13 [label="b / 0"];
+	s9 -> s1 [label="b / 0"];
+	s10 -> s10 [label="b / 1"];
+	s11 -> s10 [label="b / 0"];
+	s12 -> s2 [label="b / 1"];
+	s13 -> s0 [label="b / 1"];
+	s14 -> s13 [label="b / 1"];
+	s15 -> s1 [label="b / 0"];
+}
