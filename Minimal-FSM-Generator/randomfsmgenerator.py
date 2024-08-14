@@ -2,6 +2,13 @@
 
 global GraphvizImportSuccessful
 
+
+
+# To to be able to see the tarjan module
+import sys
+sys.path.append('../modules')
+# --------------------------------------
+
 import random
 import tarjan
 
