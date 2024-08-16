@@ -226,7 +226,7 @@ class FSM:
                     print(" Node", dest, end="")
                 print()
             
-    def output_for_ads(self, filename='ads_example.dot'):
+    def output_for_ads(self, filename='ads_example'):
         """
         Very similar to FSM.show()
         
@@ -242,17 +242,27 @@ class FSM:
         #       output  -> node.transitions[input][1] 
         
         input_mapper = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-        with open(filename, 'w') as file:
-            file.write('state_num, ' + str(self.numOfStates) + ', seed, ' + str(self.seed) + '\n')
-            file.write('digraph distinguishable {\n')
-            for inp in range(self.numOfInputs):
-                for node in self.nodes:
+        with open(filename + ".dot", 'w') as file_dot, open(filename + ".csv", 'w') as file_csv:
+            file_dot.write('state_num, ' + str(self.numOfStates) + ', seed, ' + str(self.seed) + '\n')
+            file_dot.write('digraph distinguishable {\n')
+
+            file_csv.write("state_num, transition_num, input_num, output_num, seed\n")
+            file_csv.write(str(self.numOfStates) + ", " + str(self.numOfStates * self.numOfInputs) + ", " + str(self.numOfInputs) +
+                                 ", "+ str(self.numOfOutputs) + ", " + str(self.seed) + "\n")
+            file_csv.write( "source_state, destination_state, input_symbol, output_symbol\n")
+
+            for node in range(len(self.nodes)):
+                for inp in range(self.numOfInputs):
                     # target format = { s1 -> s2 [label="a / 0"]; }
-                    file.write(f'\ts{node.index} -> s{node.transitions[inp][0].index} [label="{input_mapper[inp]} / {node.transitions[inp][1]}"];\n')
-                if not inp == self.numOfInputs-1:
-                    file.write('\n')
-            file.write('}')
-        print(f'successfully wrote the example into {filename}')
+                    file_dot.write(f'\ts{self.nodes[node].index} -> s{self.nodes[node].transitions[inp][0].index} [label="{input_mapper[inp]} / {self.nodes[node].transitions[inp][1]}"];')
+
+                    # target format = {1, 2, a, 0}
+                    file_csv.write(f'{self.nodes[node].index}, {self.nodes[node].transitions[inp][0].index}, {input_mapper[inp]}, {self.nodes[node].transitions[inp][1]}')
+                    if not node == len(self.nodes)-1 or not inp == self.numOfInputs - 1:
+                        file_dot.write('\n')
+                        file_csv.write('\n')
+            file_dot.write('}')
+        print(f'successfully wrote the example into {filename}.dot & \n {filename}.csv')
 
     def draw(self, _filename = "fsm", makePng = False):
 
