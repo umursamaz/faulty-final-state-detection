@@ -33,19 +33,18 @@ def write_fsm(file_path,  tour, input_seq, output_seq):
 def transition_tour(n, edges):
     # Create adjacency list
     graph = defaultdict(list)
+
+    # Create state -> state -> output -> input map of all transitions
     graph_input_output = defaultdict(lambda: defaultdict(lambda: dict()))
 
-    print(edges)
 
     for u, v, inp, outp in edges:
+        # To consider possible edges between states, output is also added
         graph[u].append((v, outp))
         graph_input_output[u][v][outp] = inp
 
-    print(graph)
-    print(graph_input_output)
-
-   
     # Create set of uncovered edges
+    # To consider possible edges between states, output is also added
     uncovered = set((u, v, output) for u, v, input, output in edges)
     
     # Start from node 0 / can be any node
@@ -102,6 +101,7 @@ def transition_tour(n, edges):
 
 def find_path(graph, graph_input_output, start, end):
     visited = set()
+    # set of inputs and outputs are also recorded in addition to the path of states
     stack = [(start, [start], [], [])]
     
     while stack:
@@ -118,13 +118,4 @@ def find_path(graph, graph_input_output, start, end):
     
     return None, None, None
 
-# Main execution
-file_path = '../../examples/PURE2024/test_machines/16_states/test_machine_16_states_999_seed.csv'
-# file_path = "fsm.txt"
-state_num, transition_num, input_num, output_num, seed, edges = read_fsm(file_path)
-tour, input_seq, output_seq = transition_tour(state_num, edges)
 
-# write_fsm(file_path.strip(".txt") + "_output_with_test_sequence.txt", tour, input_seq, output_seq)
-
-print("Transition Tour:")
-print(" -> ".join(map(str, tour)))
