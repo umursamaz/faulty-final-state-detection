@@ -21,5 +21,5 @@ for filename in os.listdir(fsm_dir + state_num + "_states/"):
 
         transition_tour_path = transition_tour_dir + str(state_num) + "_states/transition_tour_" + str(state_num) + "_states_" + str(seed) + "_seed.csv"
         tt.write_fsm(transition_tour_path, tour, input_seq, output_seq)
-        print("Transition Tour:")
-        print(" -> ".join(map(str, tour)))
+        #print("Transition Tour:")
+        #print(" -> ".join(map(str, tour)))
