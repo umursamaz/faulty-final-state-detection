@@ -1,0 +1,37 @@
+faulty_transition_index
+12
+state_num, transition_num, input_num, output_num, seed
+16, 32, 2, 2, 549
+source_state, destination_state, input_symbol, output_symbol
+0, 6, a, 1
+0, 1, b, 1
+1, 5, a, 1
+1, 12, b, 0
+2, 10, a, 1
+2, 13, b, 0
+3, 6, a, 0
+3, 5, b, 0
+4, 2, a, 1
+4, 7, b, 1
+5, 7, a, 1
+5, 15, b, 1
+6, 15, a, 1
+6, 12, b, 0
+7, 3, a, 0
+7, 15, b, 1
+8, 14, a, 0
+8, 9, b, 1
+9, 0, a, 0
+9, 5, b, 0
+10, 8, a, 0
+10, 12, b, 1
+11, 0, a, 0
+11, 15, b, 1
+12, 11, a, 1
+12, 2, b, 1
+13, 3, a, 0
+13, 13, b, 1
+14, 4, a, 1
+14, 12, b, 0
+15, 5, a, 1
+15, 7, b, 0
