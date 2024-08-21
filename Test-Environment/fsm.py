@@ -7,6 +7,19 @@ class FSM():
         self.input_num = input_num
         self.seed = seed
         self.transitions = transitions
+        self.current_state = 0
     
-    def appy(test_sequence: iterable):
-        pass
+    def reset(self):
+        sellf.current_state = 0
+
+    def apply(self, test_sequence: iter):
+        def apply(inp:chr):
+            input_idx = ord(inp) % ord('a')
+            transition_idx = (self.input_num * self.current_state) + input_idx
+            state, next_state, inp, outp = self.transitions[transition_idx]
+            self.current_state = next_state
+            return outp
+            
+        outp_seq = [apply(inp) for inp in test_sequence]
+
+        return outp_seq
