@@ -7,7 +7,7 @@ if len(sys.argv) > 1:
 else:
     state_num = "16"
 
-fsm_dir = "../examples/PURE2024/test_machines/" 
+fsm_dir = "../examples/PURE2024/test_machines/"
 
 fault_injection_dir = "../examples/PURE2024/faulty_test_machines/" 
 
