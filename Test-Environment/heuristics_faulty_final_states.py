@@ -24,8 +24,3 @@ def find_suspected_states(input_seq, output_seq, faulty_inp_idx, specificaiton_f
     return set(map(lambda x: x[1], current_states))
 
 
-    
-"""
-def find_suspected_states(test_seq, faulty_inp_idx, fsm):
-    pass
-"""
