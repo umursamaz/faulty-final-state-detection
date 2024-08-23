@@ -128,7 +128,6 @@ def find_path_uncovered(graph, graph_input_output, uncovered, start):
             return path, input_seq, output_seq
 
         else:
-            print(uncovered)
             if node not in visited:
                 visited.add(node)
                 for neighbor, input in graph[node]:
@@ -139,12 +138,12 @@ def find_path_uncovered(graph, graph_input_output, uncovered, start):
         
     return None, None, None
 
+if __name__ == "__main__":
+    fsm_path = "../../examples/PURE2024/test_machines/128_states/test_machine_128_states_56_seed.csv"
+    state_num, transition_num, input_num, output_num, seed, edges = read_fsm(fsm_path)
 
-fsm_path = "../../examples/PURE2024/test_machines/128_states/test_machine_128_states_56_seed.csv"
-state_num, transition_num, input_num, output_num, seed, edges = read_fsm(fsm_path)
-
-tour, input_seq, output_seq = transition_tour(state_num, edges)
-print(len(tour))
-print("Transition Tour:")
-print(" -> ".join(map(str, tour)))
+    tour, input_seq, output_seq = transition_tour(state_num, edges)
+    print(len(tour))
+    print("Transition Tour:")
+    print(" -> ".join(map(str, tour)))
 
