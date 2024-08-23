@@ -30,7 +30,7 @@ def write_fsm(file_path,  tour, input_seq, output_seq):
         f.write(", ".join(map(str, output_seq)) + "\n")
 
 
-def transition_tour(n, edges):
+def transition_tour(n, transitions):
     # Create adjacency list
     graph = defaultdict(list)
 
@@ -38,14 +38,14 @@ def transition_tour(n, edges):
     graph_input_output = defaultdict(lambda: defaultdict(lambda: dict()))
 
 
-    for u, v, inp, outp in edges:
-        # To consider possible edges between states, output is also added
-        graph[u].append((v, outp))
-        graph_input_output[u][v][outp] = inp
+    for u, v, input, output in transitions:
+        # To consider possible transisitons between states input is
+        graph[u].append((v, input))
+        graph_input_output[u][v][input] = output
 
-    # Create set of uncovered edges
-    # To consider possible edges between states, output is also added
-    uncovered = set((u, v, output) for u, v, input, output in edges)
+    # Create set of uncovered transitions
+    # To consider possible multiple transitions between states, output is also added
+    uncovered = set((u, v, input) for u, v, input, output in transitions)
     
     # Start from node 0 / can be any node
     current = 0
@@ -54,40 +54,34 @@ def transition_tour(n, edges):
     output_sequence = []
     
     while uncovered:
-        
         # Try to find an uncovered edge from the current node
         next_node = None
-        next_output = None
+        next_input = None
 
-        for neighbor, output in graph[current]:
-            if (current, neighbor, output) in uncovered:
+        for neighbor, input in graph[current]:
+            if (current, neighbor, input) in uncovered:
                 next_node = neighbor
-                next_output = output
-                uncovered.remove((current, neighbor, output))
+                next_input = input
+                uncovered.remove((current, neighbor, input))
                 break
         
         if next_node is not None:
             # Move to the next node
-            input_sequence.append(graph_input_output[current][next_node][next_output])
-            output_sequence.append(next_output)
+            input_sequence.append(next_input)
+            output_sequence.append(graph_input_output[current][next_node][next_input])
             current = next_node
             path.append(current)
         else:
-            # All edges from current node are covered, try to reach a node with uncovered edges
-            for node in range(n):
-                if any((node, neighbor, output) in uncovered for neighbor, output in graph[node]):
-                    # Find a path to this node
-                    temp_path, temp_inp_seq, temp_outp_seq = find_path(graph, graph_input_output, current, node)
-                    if temp_path:
-                        path.extend(temp_path[1:])
-                        input_sequence.extend(temp_inp_seq)
-                        output_sequence.extend(temp_outp_seq)
-                        current = node
-                        break
-            else:
-                # If can't reach any node with uncovered edges, break the loop
-                break
-    
+            # All transitions from current node are covered, try to reach a node with uncovered transitions
+            
+            temp_path, temp_inp_seq, temp_outp_seq = find_path_uncovered(graph, graph_input_output, uncovered, current)
+            
+            path.extend(temp_path[1:])
+            input_sequence.extend(temp_inp_seq)
+            output_sequence.extend(temp_outp_seq)
+            current = temp_path[-1]
+                
+
     # Complete the circuit by returning to the start
     if path[0] != path[-1]:
         temp_path, temp_inp_seq, temp_outp_seq = find_path(graph, graph_input_output, path[-1], path[0])
@@ -95,27 +89,62 @@ def transition_tour(n, edges):
             path.extend(temp_path[1:])
             input_sequence.extend(temp_inp_seq)
             output_sequence.extend(temp_outp_seq)
-   
+
     return path, input_sequence, output_sequence
-   
+
 
 def find_path(graph, graph_input_output, start, end):
     visited = set()
     # set of inputs and outputs are also recorded in addition to the path of states
-    stack = [(start, [start], [], [])]
-    
-    while stack:
-        (node, path, input_seq, output_seq) = stack.pop()
-        if node not in visited:
-            if node == end:
-                return path, input_seq, output_seq
-            visited.add(node)
-            for neighbor, output in graph[node]:
-                if neighbor not in visited:
-                    stack.append((neighbor, path + [neighbor], 
-                    input_seq + [graph_input_output[node][neighbor][output]], 
-                    output_seq + [output]))
-    
+    queue = [(start, [start], [], [])]
+
+    while queue:
+        (node, path, input_seq, output_seq) = queue.pop(0)
+
+        if node == end:
+            return path, input_seq, output_seq
+        else:
+            if node not in visited:
+                visited.add(node)
+                for neighbor, input in graph[node]:
+                    if neighbor not in visited:
+                        queue.append((neighbor, path + [neighbor], 
+                        input_seq + [input], 
+                        output_seq + [graph_input_output[node][neighbor][input]]))
+
     return None, None, None
 
+
+
+def find_path_uncovered(graph, graph_input_output, uncovered, start):
+    visited = set()
+    # set of inputs and outputs are also recorded in addition to the path of states
+    queue = [(start, [start], [], [])]
+    
+    while queue:
+        (node, path, input_seq, output_seq) = queue.pop(0)
+
+        if any((node, neighbor, input) in uncovered for neighbor, input in graph[node]):
+            return path, input_seq, output_seq
+
+        else:
+            print(uncovered)
+            if node not in visited:
+                visited.add(node)
+                for neighbor, input in graph[node]:
+                    if neighbor not in visited:
+                        queue.append((neighbor, path + [neighbor], 
+                        input_seq + [input], 
+                        output_seq + [graph_input_output[node][neighbor][input]]))
+        
+    return None, None, None
+
+
+fsm_path = "../../examples/PURE2024/test_machines/128_states/test_machine_128_states_56_seed.csv"
+state_num, transition_num, input_num, output_num, seed, edges = read_fsm(fsm_path)
+
+tour, input_seq, output_seq = transition_tour(state_num, edges)
+print(len(tour))
+print("Transition Tour:")
+print(" -> ".join(map(str, tour)))
 
