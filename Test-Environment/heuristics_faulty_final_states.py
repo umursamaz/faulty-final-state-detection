@@ -1,11 +1,12 @@
 
 def find_suspected_states(input_seq, output_seq, faulty_inp_idx, specificaiton_fsm, faulty_fsm):
-
+    i = 0
     f_state, f_output, f_inp, f_output = faulty_fsm.faulty_transition
 
     current_states = [(i, i) for i in range(specificaiton_fsm.state_num)]
 
     for input_exp, output_exp in zip(input_seq[faulty_inp_idx + 1:], output_seq[faulty_inp_idx + 1:]):
+        
         print(current_states)
         next_states = []
         for state, first_parent in current_states:
@@ -19,7 +20,7 @@ def find_suspected_states(input_seq, output_seq, faulty_inp_idx, specificaiton_f
                 else:
                     next_states.append((s2, first_parent))
         current_states = next_states
-
+        i += 1
     return set(map(lambda x: x[1], current_states))
 
 

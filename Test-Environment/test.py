@@ -23,9 +23,9 @@ def test(fsm_path, faulty_fsm_path, transition_tour_path):
 
 
 
-fsm_path = "../examples/PURE2024/test_machines/16_states/test_machine_16_states_19_seed.csv"
-faulty_fsm_path = "../examples/PURE2024/faulty_test_machines/16_states/faulty_test_machine_16_states_19_seed.csv"
-transition_tour_path = "../examples/PURE2024/transition_tours/16_states/transition_tour_16_states_19_seed.csv"
+fsm_path = "../examples/PURE2024/test_machines/128_states/test_machine_128_states_56_seed.csv"
+faulty_fsm_path = "../examples/PURE2024/faulty_test_machines/128_states/faulty_test_machine_128_states_56_seed.csv"
+transition_tour_path = "../examples/PURE2024/transition_tours/128_states/transition_tour_128_states_56_seed.csv"
     
 state_num, transition_num, input_num, output_num, seed, transitions = fsm_readers.read_fsm(fsm_path)
 fault_idx, state_num, transition_num, input_num, output_num, seed, faulty_transitions = fsm_readers.read_faulty_fsm(faulty_fsm_path)
@@ -38,6 +38,7 @@ output_expected, fault_inp_idx_s = specification_fsm.apply(transition_tour_inp)
 output_experiment, fault_inp_idx_i = iut_fsm.apply(transition_tour_inp)
 
 if output_expected != output_experiment:
+    print(fault_inp_idx_i)
     print(find_suspected_states(transition_tour_inp, output_experiment, fault_inp_idx_i, specification_fsm, iut_fsm))
 
 
