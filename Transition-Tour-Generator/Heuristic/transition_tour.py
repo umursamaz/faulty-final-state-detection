@@ -30,7 +30,7 @@ def write_fsm(file_path,  tour, input_seq, output_seq):
         f.write(", ".join(map(str, output_seq)) + "\n")
 
 
-def transition_tour(n, transitions):
+def transition_tour(start_state, transitions):
     # Create adjacency list
     graph = defaultdict(list)
 
@@ -48,8 +48,8 @@ def transition_tour(n, transitions):
     uncovered = set((u, v, input) for u, v, input, output in transitions)
     
     # Start from node 0 / can be any node
-    current = 0
-    path = [0]
+    current = start_state
+    path = [start_state]
     input_sequence = []
     output_sequence = []
     
@@ -140,10 +140,11 @@ def find_path_uncovered(graph, graph_input_output, uncovered, start):
 
 if __name__ == "__main__":
     fsm_path = "../../examples/PURE2024/test_machines/128_states/test_machine_128_states_56_seed.csv"
-    state_num, transition_num, input_num, output_num, seed, edges = read_fsm(fsm_path)
+    state_num, transition_num, input_num, output_num, seed, transitions = read_fsm(fsm_path)
 
-    tour, input_seq, output_seq = transition_tour(state_num, edges)
-    print(len(tour))
+    tour, input_seq, output_seq = transition_tour(0, transitions)
+    
     print("Transition Tour:")
     print(" -> ".join(map(str, tour)))
-
+    print("Length of Transition Tour:")
+    print(len(tour))
