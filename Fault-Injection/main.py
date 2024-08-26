@@ -25,7 +25,7 @@ for filename in os.listdir(fsm_dir):
             if not os.path.exists(fault_injection_path):
                 os.makedirs(fault_injection_path)
             
-            faulty_fsm_path = fault_injection_path + "faulty_" +  filename.lstrip(".csv") + f"{fault_seed}_fault_seed.csv"
+            faulty_fsm_path = fault_injection_path + "faulty_" +  filename.strip(".csv") + f"_{fault_seed}_fault_seed.csv"
             fi.write_faulty_fsm(faulty_fsm_path, injection_idx, state_num, transition_num, input_num, output_num, fsm_seed, fault_seed, faulty_transitions)
         
         
