@@ -1,6 +1,7 @@
 from randomfsmgenerator import FSM
 import sys
 
+
 # Default values for commandline arguments
 MACHINE_NUM = 1
 SEED_NUM = 1
