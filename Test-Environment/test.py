@@ -1,6 +1,7 @@
 import fsm_readers
 from fsm import *
 from heuristics_faulty_final_states import *
+from result_writer import *
 
 
 def test(fsm_path, faulty_fsm_path, transition_tour_path):
@@ -37,7 +38,9 @@ if __name__ == "__main__":
     output_experiment, fault_inp_idx_i = iut_fsm.apply(transition_tour_inp)
 
     if output_expected != output_experiment:
-        print(fault_inp_idx_i)
-        print(find_suspected_states(transition_tour_inp, output_experiment, fault_inp_idx_i, specification_fsm, iut_fsm))
+        
+        is_singleton, singleton_idx, suspected_states, applied_input = find_suspected_states(transition_tour_inp, output_experiment, fault_inp_idx_i, specification_fsm, iut_fsm)
+        write_result("example_result.csv", state_num, seed, seed, is_singleton, singleton_idx, suspected_states, applied_input)
+
 
 
