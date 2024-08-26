@@ -1,0 +1,8 @@
+num_states, fsm_seed, faulty_seed
+16, 50, 22
+is_singleton, singleton_iter
+True, 13
+suspected_states
+7
+applied_input
+b,b,b,a,b,a,b,a,b,a,b,b,a,a

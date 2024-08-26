@@ -20,7 +20,7 @@ def read_faulty_fsm(file_path: str):
         fault_idx = int(f.readline().strip())
 
         f.readline()
-        state_num, transition_num, input_num, output_num, seed = map(int, f.readline().strip().split(","))
+        state_num, transition_num, input_num, output_num, fsm_seed, fault_seed = map(int, f.readline().strip().split(","))
         f.readline()
 
         def read_transitions(string):
@@ -30,7 +30,7 @@ def read_faulty_fsm(file_path: str):
             except:
                 return string.strip()
         edges = [tuple(map(read_transitions, f.readline().strip().split(","))) for _ in range(transition_num)]
-    return  fault_idx, state_num, transition_num, input_num, output_num, seed, edges
+    return  fault_idx, state_num, transition_num, input_num, output_num, fsm_seed, fault_seed, edges
 
 def read_transitions_tour(file_path: str):
     with open(file_path, 'r') as f:
