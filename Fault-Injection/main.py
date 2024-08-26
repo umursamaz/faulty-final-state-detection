@@ -7,34 +7,25 @@ if len(sys.argv) > 1:
 else:
     state_num = "64"
 
-seed = int(state_num) * 2
-fsm_dir = "../examples/PURE2024/test_machines/"
+fsm_dir = f"../examples/PURE2024/test_machines/{state_num}_states/"
+fault_injection_dir = f"../examples/PURE2024/faulty_test_machines/{state_num}_states/" 
 
-fault_injection_dir = "../examples/PURE2024/faulty_test_machines/" 
-
-resource_dir = os.path.join(fsm_dir, f"{state_num}_states/")
-target_dir = os.path.join(fault_injection_dir, f"{state_num}_states_test/")
-
-for filename in os.listdir(resource_dir):
+for filename in os.listdir(fsm_dir):
 
     if filename.endswith('.csv'):
         #fsm_path = fsm_dir + str(state_num) + "_states/" + filename
-        fsm_path = resource_dir + filename
-        state_num, transition_num, input_num, output_num, dummy_seed, transitions = fi.read_fsm(fsm_path)
+        fsm_path = fsm_dir + filename
+        state_num, transition_num, input_num, output_num, fsm_seed, transitions = fi.read_fsm(fsm_path)
 
-        injection_idexes = {}
-        faulty_transitions, injection_idx, input = fi.inject_fault(state_num, transition_num, transition_num, transitions)
-        injection_idexes[seed] = injection_idx, input
-        
-        for i in range(seed-1, 0, -1):
-            faulty_transitions, injection_idx, input = fi.inject_fault(state_num, transition_num, i, faulty_transitions)
-            injection_idexes[i] = injection_idx, input
-                
-        faulty_fsm_path = target_dir + "faulty_" +  filename
-        if not os.path.exists(target_dir):
-            os.makedirs(target_dir)
+        for fault_seed in range(1, transition_num + 1):
+            faulty_transitions, injection_idx = fi.inject_fault(state_num, transition_num, fault_seed, transitions)
 
-        fi.write_faulty_fsm(faulty_fsm_path, injection_idx, state_num, transition_num, input_num, output_num, i, faulty_transitions)
+            fault_injection_path  = fault_injection_dir + f"{fsm_seed}_seed/"
+
+            if not os.path.exists(fault_injection_path):
+                os.makedirs(fault_injection_path)
+            
+            faulty_fsm_path = fault_injection_path + "faulty_" +  filename.lstrip(".csv") + f"{fault_seed}_fault_seed.csv"
+            fi.write_faulty_fsm(faulty_fsm_path, injection_idx, state_num, transition_num, input_num, output_num, fsm_seed, fault_seed, faulty_transitions)
         
-        print(f"The fault for seed of {i + 1} injected at {injection_idexes[i + 1]} in the faulty FSM {dummy_seed}.")
         

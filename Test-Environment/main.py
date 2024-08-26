@@ -15,5 +15,6 @@ transition_tour_dir = "../examples/PURE2024/transition_tours/" + state_num + "_s
 
 for filename in os.listdir(fsm_dir):
     if filename.endswith('.csv'):
+        
         print(test(fsm_dir + filename, fault_fsm_dir + "faulty_" + filename, transition_tour_dir + "transition_tour_" + filename[13: ]))
 

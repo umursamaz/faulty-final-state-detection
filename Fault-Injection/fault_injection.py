@@ -16,12 +16,12 @@ def read_fsm(file_path: str):
         edges = [tuple(map(read_transitions, f.readline().strip().split(","))) for _ in range(transition_num)]
     return  state_num, transition_num, input_num, output_num, seed, edges
 
-def write_faulty_fsm(file_path: str, fault_index, state_num, transition_num, input_num, output_num, seed, faulty_transitions):
+def write_faulty_fsm(file_path: str, fault_index, state_num, transition_num, input_num, output_num, fsm_seed, fault_seed, faulty_transitions):
     with open(file_path, 'w') as f:
         f.write("faulty_transition_index\n")
         f.write(str(fault_index) + "\n")
-        f.write("state_num, transition_num, input_num, output_num, seed\n")
-        f.write(f"{state_num}, {transition_num}, {input_num}, {output_num}, {seed}\n")
+        f.write("state_num, transition_num, input_num, output_num, fsm_seed, fault_seed\n")
+        f.write(f"{state_num}, {transition_num}, {input_num}, {output_num}, {fsm_seed}, {fault_seed}\n")
         f.write("source_state, destination_state, input_symbol, output_symbol\n")
         for s1, s2, inp, outp in faulty_transitions:
             f.write(f"{s1}, {s2}, {inp}, {outp}\n")
@@ -47,6 +47,6 @@ def inject_fault(state_num: int, transition_num: int, seed: int, transitions: li
     faulty_transitions = transitions.copy()
     faulty_transitions[fault_index] = (s1, si, input, output)
 
-    return faulty_transitions, fault_index, input
+    return faulty_transitions, fault_index
     
 

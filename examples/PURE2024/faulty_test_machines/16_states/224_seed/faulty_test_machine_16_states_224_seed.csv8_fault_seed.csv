@@ -1,0 +1,37 @@
+faulty_transition_index
+14
+state_num, transition_num, input_num, output_num, fsm_seed, fault_seed
+16, 32, 2, 2, 224, 8
+source_state, destination_state, input_symbol, output_symbol
+0, 6, a, 0
+0, 14, b, 0
+1, 7, a, 0
+1, 13, b, 0
+2, 0, a, 1
+2, 10, b, 0
+3, 3, a, 0
+3, 13, b, 1
+4, 6, a, 1
+4, 7, b, 1
+5, 12, a, 1
+5, 3, b, 0
+6, 9, a, 1
+6, 1, b, 0
+7, 11, a, 0
+7, 15, b, 1
+8, 12, a, 1
+8, 2, b, 0
+9, 3, a, 1
+9, 14, b, 1
+10, 11, a, 0
+10, 12, b, 0
+11, 12, a, 0
+11, 14, b, 1
+12, 7, a, 1
+12, 0, b, 1
+13, 8, a, 0
+13, 3, b, 1
+14, 5, a, 0
+14, 8, b, 1
+15, 11, a, 0
+15, 4, b, 0
