@@ -1,0 +1,28 @@
+State number: 16
+num_singletons: 23238
+num_non_singletons: 7903
+percantage_of_non_singletons: 25.378118878648724
+average_suspected_states: 2.470327723649247
+average_applied_inputs_length: 9.20294345468629
+ratio_of_average_applied_inputs_length_to_state_num: 0.5751839659178931
+State number: 32
+num_singletons: 46037
+num_non_singletons: 17106
+percantage_of_non_singletons: 27.090888934640418
+average_suspected_states: 2.570501578393546
+average_applied_inputs_length: 15.214544822642656
+ratio_of_average_applied_inputs_length_to_state_num: 0.475454525707583
+State number: 64
+num_singletons: 93113
+num_non_singletons: 34067
+percantage_of_non_singletons: 26.78644440949835
+average_suspected_states: 2.5814424516394165
+average_applied_inputs_length: 28.40890101274795
+ratio_of_average_applied_inputs_length_to_state_num: 0.4438890783241867
+State number: 128
+num_singletons: 187961
+num_non_singletons: 67276
+percantage_of_non_singletons: 26.358247432778164
+average_suspected_states: 2.5681818181818183
+average_applied_inputs_length: 54.68815871377573
+ratio_of_average_applied_inputs_length_to_state_num: 0.4272512399513729
