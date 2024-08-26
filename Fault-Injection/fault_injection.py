@@ -47,6 +47,6 @@ def inject_fault(state_num: int, transition_num: int, seed: int, transitions: li
     faulty_transitions = transitions.copy()
     faulty_transitions[fault_index] = (s1, si, input, output)
 
-    return faulty_transitions, fault_index
+    return faulty_transitions, fault_index, input
     
 
