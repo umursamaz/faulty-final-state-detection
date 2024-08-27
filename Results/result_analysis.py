@@ -1,6 +1,5 @@
 import os
 import csv
-from collections import defaultdict
 
 # Base directory where the results are stored
 base_directory = '../examples/PURE2024/results/'
@@ -88,11 +87,7 @@ for state_num in [16, 32, 64, 128]:
         'average_applied_inputs_length': total_applied_input_sequence_length / num_singletons if num_singletons > 0 else 0,
         'ratio_of_average_applied_inputs_length_to_state_num': total_applied_input_sequence_length / num_singletons / state_num
     }
-
-    # Print the simplified data
-    print(f'\nState number: {state_num}')
-    # for item in simplified_data[state_num]:
-    #     print(f'{item}: {simplified_data[state_num][item]}')
+    
     with open(output_file_path, 'a') as file:  # 'a' mode opens the file in append mode
         file.write(f'State number: {state_num}\n')
         for item in simplified_data[state_num]:
