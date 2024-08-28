@@ -1,6 +1,0 @@
-Jaxan Hybid-ads
-
-cd build
-./main -m fixed -f ../examples/lee_yannakakis_distinguishable.dot
-
-./main -m fixed -f ../Minimal-FSM-Generator/ads_example.dot
