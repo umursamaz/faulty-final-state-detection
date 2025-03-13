@@ -7,8 +7,8 @@ if len(sys.argv) > 1:
 else:
     state_num = "64"
 
-fsm_dir = f"../examples/PURE2024/test_machines/{state_num}_states/"
-fault_injection_dir = f"../examples/PURE2024/faulty_test_machines/{state_num}_states/" 
+fsm_dir = f"../examples/test_machines/{state_num}_states/"
+fault_injection_dir = f"../examples/faulty_test_machines/{state_num}_states/" 
 
 for filename in os.listdir(fsm_dir):
 

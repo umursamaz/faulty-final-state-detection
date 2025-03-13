@@ -1,7 +1,0 @@
-num_states, fsm_seed, faulty_seed
-128, 146, 87
-is_singleton, singleton_iter
-False, None
-suspected_states
-64,36,46,48,59
-applied_input

@@ -1,8 +1,0 @@
-num_states, fsm_seed, faulty_seed
-128, 451, 230
-is_singleton, singleton_iter
-True, 151
-suspected_states
-77
-applied_input
-a,a,a,a,b,a,b,b,a,b,b,b,a,a,a,b,b,a,a,b,b,b,a,a,a,b,a,a,b,b,a,b,a,a,b,a,b,a,a,b,b,b,b,a,b,a,b,a,a,a,b,b,b,a,b,b,b,b,a,b,b,b,a,a,b,b,a,a,b,b,b,a,b,b,a,a,b,a,a,a,b,b,b,b,a,a,b,a,a,a,b,b,b,b,b,a,a,a,b,a,b,b,a,b,b,b,b,a,a,a,a,a,a,a,b,a,a,b,a,b,b,a,a,b,b,a,b,b,b,a,b,b,a,a,b,a,b,a,b,b,b,b,b,a,b,a,a,b,a,a,b,a

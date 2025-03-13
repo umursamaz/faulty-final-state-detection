@@ -36,9 +36,9 @@ def test(fsm_path, faulty_fsm_dir, transition_tour_path, result_dir):
 
 
 if __name__ == "__main__":
-    fsm_path = "../examples/PURE2024/test_machines/128_states/test_machine_128_states_56_seed.csv"
-    faulty_fsm_dir = "../examples/PURE2024/faulty_test_machines/128_states/"
-    transition_tour_path = "../examples/PURE2024/transition_tours/128_states/transition_tour_128_states_56_seed.csv"
+    fsm_path = "../examples/test_machines/128_states/test_machine_128_states_56_seed.csv"
+    faulty_fsm_dir = "../examples/faulty_test_machines/128_states/"
+    transition_tour_path = "../examples/transition_tours/128_states/transition_tour_128_states_56_seed.csv"
         
     state_num, transition_num, input_num, output_num, seed, transitions = fsm_readers.read_fsm(fsm_path)
     transition_tour_inp, transition_tour_outp = fsm_readers.read_transitions_tour(transition_tour_path)

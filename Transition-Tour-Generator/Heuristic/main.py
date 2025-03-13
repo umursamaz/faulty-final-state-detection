@@ -9,9 +9,9 @@ if len(sys.argv) > 1:
 else:
     state_num = "16"
 
-fsm_dir = "../../examples/PURE2024/test_machines/" 
+fsm_dir = "../../examples/test_machines/" 
 
-transition_tour_dir = "../../examples/PURE2024/transition_tours/" 
+transition_tour_dir = "../../examples/transition_tours/" 
 
 for filename in os.listdir(fsm_dir + state_num + "_states/"):
 
@@ -23,5 +23,3 @@ for filename in os.listdir(fsm_dir + state_num + "_states/"):
 
         transition_tour_path = transition_tour_dir + str(state_num) + "_states/transition_tour_" + str(state_num) + "_states_" + str(seed) + "_seed.csv"
         tt.write_fsm(transition_tour_path, tour, input_seq, output_seq)
-        #print("Transition Tour:")
-        #print(" -> ".join(map(str, tour)))

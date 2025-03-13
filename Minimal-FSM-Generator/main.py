@@ -32,7 +32,7 @@ else:
 for i in range(num_of_machines):
     myfsm = FSM(num_of_states, num_of_inputs, num_of_outputs, seed)
     myfsm.generateStronglyConnectedMinimal()
-    myfsm.output_for_ads("../examples/PURE2024/test_machines/" + str(num_of_states) + "_states/test_machine_" + str(num_of_states) + "_states_" + str(seed) + "_seed")
+    myfsm.output_for_ads("../examples/test_machines/" + str(num_of_states) + "_states/test_machine_" + str(num_of_states) + "_states_" + str(seed) + "_seed")
     seed += 1
 
 # myfsm.show()

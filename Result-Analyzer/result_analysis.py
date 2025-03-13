@@ -2,7 +2,7 @@ import os
 import csv
 
 # Base directory where the results are stored
-base_directory = '../examples/PURE2024/results/'
+base_directory = '../examples/results/'
 
 # Get the current directory where the script is located
 current_directory = os.path.dirname(os.path.abspath(__file__))
